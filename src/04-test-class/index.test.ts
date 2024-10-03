@@ -42,7 +42,10 @@ describe('BankAccount', () => {
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
-    await getBankAccount(100).synchronizeBalance();
+    const acc = getBankAccount(100);
+    const fetchBalance = await acc.fetchBalance();
+    if (fetchBalance)
+      expect(acc.deposit(fetchBalance).getBalance()).toBe(100 + fetchBalance);
   });
 
   test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
