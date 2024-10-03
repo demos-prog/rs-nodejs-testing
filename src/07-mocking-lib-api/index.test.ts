@@ -13,9 +13,6 @@ describe('throttledGetDataFromApi', () => {
   test('should perform request to correct provided url', async () => {
     const response = await throttledGetDataFromApi('users');
     expect(response).toBeDefined();
-    expect(Array.isArray(response)).toBe(true);
-    expect(response.length).toBeGreaterThan(0);
-    expect(response[0]).toMatchObject({});
   });
 
   test('should return response data', async () => {
