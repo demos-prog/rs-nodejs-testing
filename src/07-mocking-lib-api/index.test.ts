@@ -2,6 +2,14 @@ import axios from 'axios';
 import { throttledGetDataFromApi } from './index';
 
 describe('throttledGetDataFromApi', () => {
+   afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   test('should create instance with provided base url', async () => {
     expect(
       axios.create({
